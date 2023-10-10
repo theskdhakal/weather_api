@@ -1,0 +1,25 @@
+<h1>Welcome to Weather Map</h1>
+<p>Your own weather forecasting site</p>
+
+<form method="POST">
+  <input type="text" placeholder="location" name="location" />
+  <button type="submit">Submit</button>
+</form>
+
+<section>
+  <% if(locals.content){ %>
+  <h1>weather description: <%=content.weather[0].description %></h1>
+  <h2>min temp in kelvin :<%= content.main.temp_min %></h2>
+  <h2>max temp in kelvin :<%= content.main.temp_max %></h2>
+
+  <% const sunrisetimestamp = content.sys.sunrise %> <% const sunriseDate=new
+  Date( sunrisetimestamp*1000) %> <% const sunsettimestamp = content.sys.sunset
+  %> <% const sunsetDate=new Date( sunsettimestamp*1000) %>
+
+  <h2>Sunrise time:<%= sunriseDate.toLocaleString() %></h2>
+  <h2>Sunset time: <%= sunsetDate.toLocaleString() %></h2>
+
+  <h3>Note: All time are in accordance with sydney time</h3>
+
+  <% }%>
+</section>
